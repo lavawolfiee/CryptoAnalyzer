@@ -194,4 +194,3 @@ percentiles = get_percentiles(prediction, std)
 # percentiles = np.array([[59000, 61000], [59000, 61000], [59000, 61000]])
 
 plot_prediction(data, prediction, percentiles)'''
-
