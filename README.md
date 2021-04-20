@@ -14,3 +14,9 @@
 - Different agents and algorithm (such as neural networks)
 - Ability to compare and view predictions of different agents
   from website and Telegram Bot
+
+## Installation
+```shell script
+pip install -r requirements.txt
+flask run
+```
