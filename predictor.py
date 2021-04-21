@@ -40,7 +40,7 @@ API_KEY = 'I1YhnvGIXQdRgFMC275fUvWPoqsaIGnkYAVFLUm7qjXX6HYO6mr2rHjUop8RkDzq'
 b = Binance(API_KEY)
 
 symbols = ['BTCUSDT', 'ETHBTC', 'LTCBTC']
-intervals = ['15m', '1h', '1d']
+intervals = ['1d', '1h', '15m']
 dfs = dict()
 
 
