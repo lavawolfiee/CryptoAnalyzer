@@ -67,6 +67,7 @@ def load_data(symbol, interval):
     if symbol in dfs and interval in dfs[symbol]:
         return dfs[symbol][interval]
     else:
+        logging.info("Reading {} {} from file...".format(symbol, interval))
         df = pd.read_csv('data/{0}/{1}_{0}.csv'.format(interval, symbol),
                          index_col=[0])
         dfs.setdefault(symbol, dict())[interval] = df
@@ -76,13 +77,21 @@ def load_data(symbol, interval):
 def update_data():
     for symbol in symbols:
         for interval in intervals:
-            df = load_data(symbol, interval)
-            df.reset_index(inplace=True)
-            start_time = df['Open time'].iloc[-1] + 1
-            df.set_index(['Open time'], inplace=True)
-            new_df = b.download_data(symbol=symbol, interval=interval,
-                                     start_time=start_time)
-            dfs[symbol][interval] = df.append(new_df)
+            update_symbol(symbol, interval)
+
+
+def update_symbol(symbol, interval):
+    df = load_data(symbol, interval)
+    df.reset_index(inplace=True)
+    start_time = df['Open time'].iloc[-1] + 1
+    df.set_index(['Open time'], inplace=True)
+    logging.info("Updating {} {}...".format(symbol, interval))
+    new_df = b.download_data(symbol=symbol, interval=interval,
+                             start_time=start_time)
+    logging.info("Updated {} klines of {} {}".format(new_df.shape[0],
+                                                     symbol,
+                                                     interval))
+    dfs[symbol][interval] = df.append(new_df)
 
 
 def get_percentile(p, mean, std):
@@ -157,6 +166,7 @@ def plot_prediction(_ohlcv: pd.DataFrame, prediction: np.ndarray,
 
 
 def predict(window=50, predict_steps=10, symbol='BTCUSDT', interval='1h'):
+    update_symbol(symbol, interval)
     df = load_data(symbol, interval)
     data = df.tail(window)
     pf = PatternsFinder([df])

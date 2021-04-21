@@ -3,10 +3,11 @@
 - Download data from Binance using API
 - Analyze data using statistics
 - Plot prediction
-
-## TODO:
 - Show predictions on website
 - Request different predictions from website
+
+## TODO:
+- Better website
 - The same for Telegram Bot
 - Improved analysis algorithms
 - OpenAI Gym compatible trading environment
@@ -18,5 +19,9 @@
 ## Installation
 ```shell script
 pip install -r requirements.txt
+```
+## Usage
+```shell script
 flask run
 ```
+Follow localhost address in your console (most likely http://127.0.0.1:5000)
