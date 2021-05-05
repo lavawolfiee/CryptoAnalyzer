@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Analyzer</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+<center>
+    <label for="window">Window</label>
+    <input name="window" id="window" value="50">
+    <br>
+    <label for="steps">Steps</label>
+    <input name="steps" id="steps" value="10">
+    <br>
+    <label for="symbol">Symbol</label>
+    <select id="symbol">
+        {% for symbol in symbols %}
+        <option value="{{ symbol }}">{{ symbol }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="interval">Interval</label>
+    <select id="interval">
+        {% for interval in intervals %}
+        <option value="{{ interval }}">{{ interval }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="button" value="Predict" id="predict_btn">
+    (this may take some time)
+    <br>
+    <img id="result_img">
+</center>
+</body>
+</html>
