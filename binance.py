@@ -72,11 +72,11 @@ class Binance:
                    limit=1000):
         params = {'symbol': symbol,
                   'interval': interval,
-                  'limit': limit}
+                  'limit': int(limit)}
         if start_time:
-            params['startTime'] = start_time
+            params['startTime'] = int(start_time)
         if end_time:
-            params['endTime'] = end_time
+            params['endTime'] = int(end_time)
 
         r = self.get_request(self.BASE_URL + self.KLINES_URL, params=params)
 

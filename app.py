@@ -1,8 +1,7 @@
 import random
 import string
-from flask import Flask, jsonify, request, redirect, send_from_directory, \
+from flask import Flask, request, send_from_directory, \
     render_template
-import logging
 import os
 
 import predictor
