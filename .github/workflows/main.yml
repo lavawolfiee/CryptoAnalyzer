@@ -25,7 +25,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Download
         run: |
-          git clone https://github.com/lavawolfiee/CryptoAnalyzer.git
           cd CryptoAnalyzer
           checkout dev
           
